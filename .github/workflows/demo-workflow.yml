@@ -1,0 +1,25 @@
+name: GitHub Actions Demo
+run-name: ${{ github.actor }} 正在测试自动化流程 
+
+# 触发条件：代码推送时启动工作流
+
+on: [push]
+jobs:
+  Explore-GitHub-Actions:
+
+    # 指定运行环境，可选 ubuntu-latest / windows-latest / macos-latest
+
+    runs-on: ubuntu-latest
+    steps:
+
+      # 第一步：官方动作，拉取当前仓库的代码到运行器中
+
+      - name: 检出仓库代码
+        uses: actions/checkout@v4
+
+      # 后续自定义执行步骤
+
+      - name: 打印触发事件信息
+        run: echo "本次工作流由 ${{ github.event_name }} 事件触发"
+      - name: 打印当前工作路径
+        run: pwd
